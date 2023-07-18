@@ -3,7 +3,7 @@
     <a-button @click="onToggleLoading">切换加载</a-button>
     <a-button @click="onToggleDisabled">切换禁用</a-button>
   </a-space>
-
+  <button @click="console.log(dataSource)">aa</button>
   <JVxeTable
     ref="tableRef"
     stripe
@@ -23,6 +23,7 @@
     :dataSource="dataSource"
     @remove="onJVxeRemove"
   >
+
     <template #toolbarSuffix>
       <a-button @click="handleTableCheck">表单验证</a-button>
       <a-tooltip placement="top" title="获取值，忽略表单验证" :autoAdjustOverflow="true">
@@ -65,7 +66,7 @@
   import { pushIfNotExist } from '/@/utils/common/compUtils';
 
   const { createMessage } = useMessage();
-  const tableRef = ref<JVxeTableInstance>();
+  const tableRef = ref<any>();
   const loading = ref(false);
   const disabled = ref(false);
   const columns = ref<JVxeColumn[]>([

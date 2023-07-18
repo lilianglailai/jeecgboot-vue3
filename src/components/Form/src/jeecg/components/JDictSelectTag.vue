@@ -37,6 +37,9 @@
       :getPopupContainer="getPopupContainer"
       :style="style"
       @change="handleChange"
+      showSearch
+      :mode="selectMode"
+      
     >
       <a-select-option v-if="showChooseOption" :value="null">请选择…</a-select-option>
       <template v-for="item in dictOptions" :key="`${item.value}`">
@@ -67,7 +70,8 @@
       value: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.array]),
       dictCode: propTypes.string,
       type: propTypes.string,
-      placeholder: propTypes.string,
+      placeholder: {type: String,default:"请选择"},
+      selectMode:{type:String,default:''},
       stringToNumber: propTypes.bool,
       getPopupContainer: {
         type: Function,

@@ -206,7 +206,7 @@ export const usePermissionStore = defineStore({
 
         // 后台菜单构建
         case PermissionModeEnum.BACK:
-          const { createMessage, createWarningModal } = useMessage();
+          const { createMessage, createWarningModal,createConfirm } = useMessage();
           // 菜单加载提示
           // createMessage.loading({
           //   content: t('sys.app.menuLoading'),
@@ -241,14 +241,18 @@ export const usePermissionStore = defineStore({
               // 延迟1.5秒之后再出现提示，否则提示框出不来
               setTimeout(
                 () =>
-                  createWarningModal({
+                  createConfirm({
                     title: '检测提示',
+                    iconType: 'warning',
                     content:
                       '当前菜单表是 <b>Vue2版本</b>，导致菜单加载异常!<br>点击确认，切换到Vue3版菜单！',
-                    onOk:function () {
-                      switchVue3Menu();
+                     onOk:function () {
+                    //   switchVue3Menu();
                       location.reload();
-                    }
+                    },
+                    onCancel() {
+                        console.log('Cancel');
+                      },
                   }),
                 100
               );

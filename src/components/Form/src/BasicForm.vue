@@ -114,7 +114,11 @@
       const getSchema = computed((): FormSchema[] => {
         const schemas: FormSchema[] = unref(schemaRef) || (unref(getProps).schemas as any);
         for (const schema of schemas) {
+
           const { defaultValue, component, componentProps } = schema;
+          if (!component) {
+            schema.component="Input"
+          }
           // handle date type
           if (defaultValue && dateItemType.includes(component)) {
             //update-begin---author:wangshuai ---date:20230410  for：【issues/435】代码生成的日期控件赋默认值报错------------
@@ -150,7 +154,8 @@
           }
         }
         if (unref(getProps).showAdvancedButton) {
-          return schemas.filter((schema) => schema.component !== 'Divider') as FormSchema[];
+          return schemas.filter((schema) => schema.component !== 'Divider'
+            ) as FormSchema[];
         } else {
           return schemas as FormSchema[];
         }
@@ -378,4 +383,5 @@
       }
     }
   }
+
 </style>

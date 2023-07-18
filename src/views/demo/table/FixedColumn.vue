@@ -73,6 +73,7 @@
         actionColumn: {
           width: 160,
           title: 'Action',
+          fixed:"right",
           dataIndex: 'action',
           slots: { customRender: 'action' },
         },
