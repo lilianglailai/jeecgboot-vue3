@@ -86,27 +86,7 @@ export const formSchema: FormSchema[] = [
           { label: '子菜单', value: 1 },
           { label: '按钮/权限', value: 2 },
         ],
-        onChange: (e) => {
-          const { updateSchema, clearValidate } = formActionType;
-          const label = isButton(e) ? '按钮/权限' : '菜单名称';
-          //清除校验
-          clearValidate();
-          updateSchema([
-            {
-              field: 'name',
-              label: label,
-            },
-            {
-              field: 'url',
-              required: !isButton(e),
-            },
-          ]);
-          //update-begin---author:wangshuai ---date:20220729  for：[VUEN-1834]只有一级菜单，才默认值，子菜单的时候，清空------------
-          if (isMenu(e) && !formModel.id && formModel.component=='layouts/RouteView') {
-            formModel.component = '';
-          }
-          //update-end---author:wangshuai ---date:20220729  for：[VUEN-1834]只有一级菜单，才默认值，子菜单的时候，清空------------
-        },
+       
       };
     },
   },
@@ -139,11 +119,7 @@ export const formSchema: FormSchema[] = [
     label: '访问路径',
     component: 'Input',
     required: true,
-    ifShow: ({ values }) => !(values.component === ComponentTypes.IFrame && values.internalOrExternal) && values.menuType !== 2,
-    //update-begin-author:zyf date:2022-11-02 for: 聚合路由允许路径重复
-     dynamicRules: ({ model, schema }) => {
-       return checkPermDuplication(model, schema, true);
-    },
+ 
     //update-end-author:zyf date:2022-11-02 for: 聚合路由允许路径重复
   },
   {

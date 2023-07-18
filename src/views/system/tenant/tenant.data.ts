@@ -7,7 +7,8 @@ export const columns: BasicColumn[] = [
     title: '租户名称',
     dataIndex: 'name',
     width: 200,
-    align: 'left',
+   
+    
   },
   {
     title: '租户编号(ID)',
@@ -109,7 +110,7 @@ export const formSchema: FormSchema[] = [
   {
     field: 'name',
     label: '租户名称',
-    component: 'Input',
+     
     required: true,
   },
   {
@@ -117,13 +118,11 @@ export const formSchema: FormSchema[] = [
     label: '租户编号(ID)',
     component: 'InputNumber',
     required: true,
-    ifShow: ({ values }) => {
-      return values.id!=null;
-    },
+    
   },
   {
     field: 'companyLogo',
-    label: '组织LOGO',
+    label: '组织LOGO1',
     component: 'JImageUpload',
     componentProps:{
       text:'logo'
@@ -340,7 +339,7 @@ export const recycleColumns : BasicColumn[] = [
     title: '租户名称',
     dataIndex: 'name',
     width: 100,
-    align: 'left',
+    
   },
   {
     title: '租户编号(ID)',

@@ -304,7 +304,7 @@ export function useListTable(tableProps: TableProps): [
   const rowSelection: any = tableProps?.rowSelection ?? {};
   const defaultRowSelection = reactive({
     ...rowSelection,
-    type: rowSelection.type ?? 'checkbox',
+    type: 'radio',
     // 选择列宽度，默认 50
     columnWidth: rowSelection.columnWidth ?? 50,
     selectedRows: selectedRows,

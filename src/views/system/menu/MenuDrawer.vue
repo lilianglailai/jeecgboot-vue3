@@ -45,7 +45,7 @@
       },
       {
         field: 'name',
-        label: isButton(unref(menuType)) ? '按钮/权限' : '菜单名称',
+        label: isButton(unref(menuType)) ? '按钮/权限' : '菜单名称zzz',
       },
       {
         field: 'url',
